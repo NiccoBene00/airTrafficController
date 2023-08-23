@@ -1,0 +1,3 @@
+module airTrafficController {
+	requires junit;
+}

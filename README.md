@@ -7,4 +7,4 @@ SWE - domain model projectn | Stud. UNIFI Niccolò Benedetto MAT. 7024656 | Part
 Repository content:
   - folder "AirTrafficController_Doc": technical report and code documentation
   - folder "airTrafficController": JAVA program implemented with Eclipse environment
-  - folder "Junit4": external libraries requested by Eclipse for running JAVA Junit testss 
+  - folder "Junit4": external libraries requested by Eclipse for running JAVA Junit tests

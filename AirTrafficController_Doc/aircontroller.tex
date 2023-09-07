@@ -244,7 +244,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 	private String airportName;
 	private LinkedList<Runway> registeredRunways = new LinkedList<>();
 	private LinkedList<Runway> availableRunways = new LinkedList<>();
-	private HashMap<Aircraft, Runway> aircraftRunwayAircraft = new HashMap<>();
+	private HashMap<Aircraft, Runway> mapRunwayAircraft = new HashMap<>();
 	
 	
 	public LanaiAirPolicie(String airportName) {
@@ -331,7 +331,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 					//allot proper runway to scheduled flights
 					
 					allotRunway = runway.getRunwayName();
-					this.aircraftRunwayAircraft.put(aircraft, runway);
+					this.mapRunwayAircraft.put(aircraft, runway);
 					this.availableRunways.remove(runway);
 					
 				}
@@ -342,7 +342,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 					//allot proper runway to private jets
 					
 					allotRunway = runway.getRunwayName();
-					this.aircraftRunwayAircraft.put(aircraft, runway);
+					this.mapRunwayAircraft.put(aircraft, runway);
 					this.availableRunways.remove(runway);
 					
 				}
@@ -351,7 +351,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 			
 		}
 		
-		if(!this.aircraftRunwayAircraft.containsKey(aircraft)) {
+		if(!this.mapRunwayAircraft.containsKey(aircraft)) {
 			
 			//there have to be a queue for some aircraft			
 			enqueueAircraft(aircraft);
@@ -369,7 +369,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 				
 				//scheduled flights have to be enqueue to the Runway1
 				
-				this.aircraftRunwayAircraft.put(aircraft, runway);
+				this.mapRunwayAircraft.put(aircraft, runway);
 				break;
 				
 			}
@@ -379,7 +379,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 				
 				//private jets have to be enqueue to the Runway2
 				
-				this.aircraftRunwayAircraft.put(aircraft, runway);
+				this.mapRunwayAircraft.put(aircraft, runway);
 				break;
 				
 			}
@@ -395,19 +395,21 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 		int privateJetsEnqueued = 0;
 
 		String newRunway = null;
+  
 
-		for (Aircraft enqueuedAircraft : this.aircraftRunwayAircraft.keySet()) {
+		for (Aircraft enqueuedAircraft : this.mapRunwayAircraft.keySet()) {
 			
 			if (enqueuedAircraft.getFlighID().substring(0, 2).equals("AL")
-					&& this.aircraftRunwayAircraft.get(enqueuedAircraft).
+					&& this.mapRunwayAircraft.get(enqueuedAircraft).
 					getRunwayName().equals("Runway1")) {
 				
 				//we have to count how many scheduled flights are enqueued
 				
 				scheduledFlightEnqueued++;
 			}
+   
 			if (enqueuedAircraft.getFlighID().substring(0, 2).equals("PJ")
-					&& this.aircraftRunwayAircraft.get(enqueuedAircraft).
+					&& this.mapRunwayAircraft.get(enqueuedAircraft).
 					getRunwayName().equals("Runway2")) {
 				
 				//we have to count how many private jets are enqueued
@@ -424,7 +426,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 			
 			for (Runway runway : this.availableRunways) {
 				if (runway.getRunwayName().equals("Runway2")) {
-					this.aircraftRunwayAircraft.put(aircraft, runway);
+					this.mapRunwayAircraft.put(aircraft, runway);
 					this.availableRunways.remove(runway);
 					newRunway = runway.getRunwayName();
 				}
@@ -439,7 +441,7 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 			
 			for (Runway runway : this.availableRunways) {
 				if (runway.getRunwayName().equals("Runway1")) {
-					this.aircraftRunwayAircraft.put(aircraft, runway);
+					this.mapRunwayAircraft.put(aircraft, runway);
 					this.availableRunways.remove(runway);
 					newRunway = runway.getRunwayName();
 				}
@@ -454,11 +456,12 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 	public String releaseRunwayOccupiedBy(Aircraft aircraft) {
 
 		String releasedRunway = null;
+  
 		boolean alreadyAvailable = false;
 
 		for (Runway runway : this.availableRunways) {
 
-			if (runway.equals(this.aircraftRunwayAircraft.get(aircraft))) {
+			if (runway.equals(this.mapRunwayAircraft.get(aircraft))) {
 
 				alreadyAvailable = true;
 
@@ -467,10 +470,10 @@ public class LanaiAirPolicie implements AirTrafficControllable{
 		}
 
 		if (!alreadyAvailable) {
-			this.availableRunways.add(this.aircraftRunwayAircraft.get(aircraft));
+			this.availableRunways.add(this.mapRunwayAircraft.get(aircraft));
 		}
 
-		releasedRunway = this.aircraftRunwayAircraft.get(aircraft).getRunwayName();
+		releasedRunway = this.mapRunwayAircraft.get(aircraft).getRunwayName();
 
 		return releasedRunway;
 	}

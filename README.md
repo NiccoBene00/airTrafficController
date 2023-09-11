@@ -1,6 +1,6 @@
 # airTrafficController projetc
 
-SWE - domain model projectn | Stud. UNIFI Niccolò Benedetto MAT. 7024656 | Partner Takoukam Tonga Yvan
+SWE - domain model project | Stud. UNIFI Niccolò Benedetto MAT. 7024656 | Partner Takoukam Tonga Yvan
   
   • JAVA program that emulate a control tower logic about taxiing and taking off of the aircrafts.
 

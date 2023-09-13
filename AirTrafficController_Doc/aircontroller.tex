@@ -617,6 +617,7 @@ Availble runways: |Runway1|Runway2|
 \bigbreak
 L'output ottenuto deriva da una serie di stampe a video riportate in una classe contenente il metodo principale \textbf{\textit{public static void main(String[] args)}} e la sua funzione è prettamente dimostrativa.
 I reali test infatti vengono eseguiti attraverso l'utilizzo del framework \textit{JUnit4}. Di seguito si è riportato un frammento di codice caratterizzante di alcune classi di test.
+Si tenga presente che i test effettuati sono di natura funzionale, ossia cercano di verificare la logica presentata nella sezione 2 dell'elaborato.
 \bigbreak
 
 \begin{lstlisting}[language = Java , frame = single , firstnumber = last , escapeinside={(*@}{@*)}]
@@ -795,6 +796,17 @@ Da un punto di vista più ampio, questo lavoro fornisce un contributo significat
 \bigbreak
 
 In conclusione, l'elaborato rappresenta un esempio eccellente di come l'analisi, la progettazione e l'implementazione accurata di un modello di dominio possano portare a soluzioni robuste e efficaci per problemi complessi. Questo lavoro costituirà una risorsa preziosa per chiunque sia interessato a esplorare ulteriormente il dominio e implementare soluzioni basate su questo pattern, contribuendo così al progresso nella comprensione e nell'applicazione di questo importante campo.
+
+\section{Note e osservazioni del docente}
+
+\begin{itemize}
+    \item[$\ast$] La struttura UML del programma non ricalca dettagliatamente quella del pattern Mediator presentata. In particolare la dipendenza tra la classe \textbf{Aircraft} e \textbf{LanaiAirPolicie} rende "inutile" l'utilizzo dell'interfaccia. Decisamente più interessante sarebbe stato qualora ci fosse una correlazione tra \textbf{Aircraft} e \textbf{AirTrafficControllable}.
+    Non è stato dunque implementato correttamente il pattern Mediator, quanto una sua revisione modificata.
+    \item[$\ast$] La classe astratta \textbf{ControlTower} può essere sostituita con una default interface.
+    \item[$\ast$] I test dovrebbero essere efficaci per collaudare la strutturalità del contesto da modellare, oltre che le funzionalità offerte. Quanto meno devono essere maggiormente dettagliati nella stesura dell'elaborato.
+    \item[$\ast$] L'elaborato ha funzione di documentare il lavoro svolto: consiglio quindi l'utilizzo di template, mock-up, commenti in fase di trascrizione del codice, oltre che tutti gli altri diagrammi correttamente definiti.
+    \item[$\ast$] Estensione del modello: sottolineando che per l'esame di SWE il progetto si presenta coerente con le linee guida, maggior interesse avrebbe lo studio della comunicazione dei diversi software che compongono il sistema (quindi le relazioni che sussistono tra i codici degli oggetti di tipo \textit{Aircraft}, \textit{Runway}, \textit{ControlTower}, ecc...).
+\end{itemize}
 
 \end{sloppy}
 

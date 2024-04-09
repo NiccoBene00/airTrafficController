@@ -8,4 +8,4 @@ Repository content:
   - folder "AirTrafficController_Doc": technical report and code documentation implemented with LaTeX software (Overleaf environment).
   - folder "airTrafficController": JAVA program implemented with Eclipse environment.
   - folder "Junit4": external libraries requested by Eclipse for running JAVA Junit tests. These libraries have to be downloaded and imported manually inside Eclipse environment.
-  - file "Air_Traffic_Controller.pdf": pdf versione of latex documentation.
+  - file "Air_Traffic_Controller.pdf": pdf version of latex documentation.
